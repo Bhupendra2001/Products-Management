@@ -51,7 +51,7 @@ const creatProduct = async (req,res)=> {
         let url = await uploadFile(product_image[0])
         data["productImage"] = url
         let product = await productModel.create(data)
-        return res.status(201).send({ status: true, message: "Product is successfully created",data: product,
+        return res.status(201).send({ status: true, message: "Success",data: product,
         })
 
 
@@ -108,7 +108,7 @@ const getProduct = async (req, res) => {
 
         const toSend = await productModel.find(fillTers).sort({ price: parseInt(priceSort) })
         if(toSend.length==0){return res.status(404).send({status:false,message:"No products found"})}
-        res.status(200).send({ status: true, message: "success", data: toSend })
+        res.status(200).send({ status: true, message: "Success", data: toSend })
     } catch (error) {
         res.status(500).send({ status: false, message: error.message })
     }
@@ -127,7 +127,7 @@ const getProductById = async (req,res)=>{
         let  productData = await productModel.findOne({_id:productId,isDeleted:false})
         if(!productData) return res.status(404).send({ status: false, message: "Product Not Found" })
 
-        return res.status(200).send({status : true,message:"success", data : productData })
+        return res.status(200).send({status : true,message:"Success", data : productData })
 
         }catch(err){
         return res.status(500).send({status : false , message : err.message})
@@ -222,7 +222,7 @@ const updateProduct = async (req,res)=>{
         { upsert : true, new : true,}
         )
 
-       return res.status(200).send({status : true, data : updatedProduct})
+       return res.status(200).send({status : true, message : "Success", data : updatedProduct})
        }
        catch(err){
         return res.status(500).send({status : false , message : err.message })

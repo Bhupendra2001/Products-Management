@@ -25,7 +25,7 @@ const createOrder = async (req,res) =>{
             totalItems:0
     },{new:true})
     }
-    res.status(201).send({status:true,message:"successful",data:toSend})
+    res.status(201).send({status:true,message:"Success",data:toSend})
 }catch(err)
 {
     return res.status(500).send({status : false , message : err.message})
@@ -48,7 +48,7 @@ const updateOrder = async (req,res)=>{
         if(orderData.userId != userId) return res.status(404).send({status : false , message : "given user not exit orderdata"})
         if(orderData.cancellable == false && status == 'cancled') return res.status(400).send({status : false, message : "you can not cancle this order "})
         let updatedData = await orderModel.findByIdAndUpdate(orderId,{ $set :{status : status}},{new : true})
-        return res.status(200).send({status : true, message : "updated successfully", data : updatedData })
+        return res.status(200).send({status : true, message : "Success", data : updatedData })
        
      }catch(err){
         return res.status(500).send({status : false , message : err.message})

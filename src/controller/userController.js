@@ -203,6 +203,7 @@ const login = async (req, res)=>{
         }
        
         if(address){
+            address = JSON.parse(address)
             const {shipping, billing} = address
             if(shipping){
                 if(shipping.street)

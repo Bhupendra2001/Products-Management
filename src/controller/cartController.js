@@ -38,7 +38,7 @@ const createCart = async function(req,res){
         cartData.totalItems = 1
         const toSend = await cartModel.create(cartData)
         console.log(toSend)
-        return res.status(201).send({status:true,message:"success",data:toSend})
+        return res.status(201).send({status:true,message:"Success",data:toSend})
         }
         
         const found = carT.items.find(x=>x.productId==productId)
@@ -58,7 +58,7 @@ const createCart = async function(req,res){
            totalPrice:carT.totalPrice
         },
         {new:true})
-        return res.status(200).send({status:true,message:"success",data:toSend})
+        return res.status(200).send({status:true,message:"Success",data:toSend})
         }catch(error){
         return res.status(500).send({status:false, messsage:error.messsage})
 }
@@ -131,7 +131,7 @@ const  updateCart = async (req,res)=>
         totalPrice:carT.totalPrice,
     
         },{new:true})
-        return  res.status(200).send({status:true,message:" update success",data:toSend})
+        return  res.status(200).send({status:true,message:"Success",data:toSend})
         }catch(err){
         return res.status(500).send({status:false,message:err.message})
 }
